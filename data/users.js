@@ -1,5 +1,6 @@
-import { users } from "../config/mongoCollections";
+import { users } from "../config/mongoCollections.js";
 import * as validation from "../validation.js"
+import { ObjectId } from "mongodb";
 
 const usersCollection = await users();
 
@@ -9,7 +10,7 @@ const getAllUsers = async () => {
 }
 
 const getUser = async (id) => {
-    const id = validation.checkId(id, "userID");
+    const _id = validation.checkId(id, "userID");
     const user = await usersCollection.findOne({ _id: id });
     return user;
 }
@@ -31,12 +32,12 @@ const createUser = async (username, email, password) => {
     const insertInfo = await usersCollection.insertOne(newUser);
     if (insertInfo.insertedCount === 0) throw "Could not add user";
 
-    return user;
+    return newUser;
 
 }
 
 const updateUser = async (id, username, email, password) => {
-    const id = validation.checkId(id, "userID");
+    const _id = validation.checkId(id, "userID");
     username = validation.checkUserName(username, "username");
     email = validation.checkEmail(email, "email");
     password = validation.checkPassword(password, "password");

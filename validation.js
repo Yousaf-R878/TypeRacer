@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 
 export function checkId(id, type = "Object", funcName = "Unknown function") {
     if (!id || typeof id !== "string") {
@@ -13,13 +14,14 @@ export function checkId(id, type = "Object", funcName = "Unknown function") {
 
 export function checkUserName(userName, varName){
 
+    return userName.trim();
 }
 
 export function checkEmail(email, varName){
-
+    return email.trim();
 }
 
 export function checkPassword(password, varName){
-
+    return password.trim();
 }
 
