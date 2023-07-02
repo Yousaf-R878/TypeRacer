@@ -48,11 +48,15 @@ const updateUser = async (id, username, email, password) => {
     const user = await usersCollection.findOne({ _id: id });
     if (!user) throw "User not found";
 
-    const updateInfo = await usersCollection.updateOne({ _id: id }, { $set: updatedUser });
-    if (!updateInfo.matchedCount && !updateInfo.modifiedCount) throw 'Update failed';
+    const updateInfo = await usersCollection.updateOne({ _id: id }, { $set: updatedUser }, {returnDocument: 'after'});
+    if (updatedInfo.lastErrorObject.n === 0) {
+        throw [404,'could not update message successfully'];
+    }
 
     return await this.getUser(id);
 }
+
+
 const exportedMethods = {
     getAllUsers,
     getUser,
