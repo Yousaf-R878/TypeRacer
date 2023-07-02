@@ -6,10 +6,12 @@
     "userName":
     "email": 
     "password":
-    "races":{
-        "WPM":
-        "Date":
-    }
+    "races":[
+        {
+            "WPM":
+            "Date":
+        },
+    ]
 }
 
 ```
