@@ -46,8 +46,4 @@ await db.dropDatabase();
 let user = await userData.createUser("test", "test", "test");
 console.log(user);
 
-await userData.updateUser(user._id, "test2", "test2", "test2");
-
-// await db.dropDatabase();
-// await closeConnection();
-// console.log("Done!");
+//await userData.updateUser(user._id, "test2", "test2", "test2");

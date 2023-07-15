@@ -1,5 +1,6 @@
 # Type Racer
 
+**Users**
 ```
 {
     "id": ObjectId
@@ -15,3 +16,11 @@
 }
 
 ```
+
+**Races**
+
+```
+{
+    "id": ObjectId
+    "text": 
+}
